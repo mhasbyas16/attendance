@@ -46,6 +46,8 @@ $(document).ready(function(){
     $("#btn1").click(function(){
         $("#forgot").fadeToggle();
     });
+
+    alert("Untuk TA");
 });
 
 </script>
