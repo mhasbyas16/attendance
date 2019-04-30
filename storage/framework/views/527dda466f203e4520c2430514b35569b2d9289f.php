@@ -15,25 +15,25 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
+    <link rel="shortcut icon" href="<?php echo e(asset('favicon.ico')); ?>">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(url('assets/css/bootstrap.min.css')); ?>">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="{{ url('assets/style.css')}}">
+    <link rel="stylesheet" href="<?php echo e(url('assets/style.css')); ?>">
     <!-- Colors CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/colors.css')}}">
+    <link rel="stylesheet" href="<?php echo e(url('assets/css/colors.css')); ?>">
     <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/versions.css')}}">
+    <link rel="stylesheet" href="<?php echo e(url('assets/css/versions.css')); ?>">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="<?php echo e(url('assets/css/responsive.css')); ?>">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/custom.css')}}">
+    <link rel="stylesheet" href="<?php echo e(url('assets/css/custom.css')); ?>">
 
     <!-- ALL JS FILES -->
-    <script src="{{url('assets/js/all.js')}}"></script>
+    <script src="<?php echo e(url('assets/js/all.js')); ?>"></script>
     <!-- ALL PLUGINS -->
-    <script src="{{url('assets/js/custom.js')}}"></script>
+    <script src="<?php echo e(url('assets/js/custom.js')); ?>"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -47,7 +47,7 @@ $(document).ready(function(){
         $("#forgot").fadeToggle();
     });
 
-    //alert("Untuk TA");
+    alert("Untuk TA");
 });
 
 </script>
@@ -77,24 +77,25 @@ $(document).ready(function(){
         <nav class="megamenu navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('assets/img/logoo.png')}}" style="width: 70px; height: 60px;" alt="image"></a>
+                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(url('assets/img/logoo.png')); ?>" style="width: 70px; height: 60px;" alt="image"></a>
                 </div>
 
             </div>
         </nav>
     </header>
 
-    <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('{{url('assets/uploads/paralax.jpg')}}');">
+    <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('<?php echo e(url('assets/uploads/paralax.jpg')); ?>');">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                  @if(\Session::has('alert'))
+                  <?php if(\Session::has('alert')): ?>
                       <div class="alert alert-danger" align-center>
-                      <strong>{{Session::get('alert')}}</strong>
+                      <strong><?php echo e(Session::get('alert')); ?></strong>
                       </div>
-                  @endif
-                  <form method="post" action="{{url('/login')}}">
-                  {{csrf_field()}}
+                  <?php endif; ?>
+                  <form method="post" action="<?php echo e(url('/login')); ?>">
+                  <?php echo e(csrf_field()); ?>
+
                   <div class="card" id="attendance" style="display:;">
                     <div class="modal-body">
                       <div class="form-group">
@@ -122,8 +123,9 @@ $(document).ready(function(){
                     </div>
                   </form>
 
-                  <form method="POST" action="{{url('/forgot')}}">
-                  {{csrf_field()}}
+                  <form method="POST" action="<?php echo e(url('/forgot')); ?>">
+                  <?php echo e(csrf_field()); ?>
+
                   <div class="card" id="forgot" style="display:none;">
                     <div class="form-group">
                       <label for="subject" class="control-label">Subject</label>
@@ -163,8 +165,8 @@ $(document).ready(function(){
         <div class="container ">
 
             <div class="section-title text-center">
-              <img class="img-responsive center-block" src="{{url('assets/img/logoo.png')}}"/>
-                <p style="color: white">All Rights Reserved &copy; 2018 - <a href="{{url('/web')}}" style="color: white"> PT.Infinite Business Synergy</p>
+              <img class="img-responsive center-block" src="<?php echo e(url('assets/img/logoo.png')); ?>"/>
+                <p style="color: white">All Rights Reserved &copy; 2018 - <a href="<?php echo e(url('/web')); ?>" style="color: white"> PT.Infinite Business Synergy</p>
             </div><!-- end title -->
         </div><!-- end container -->
     </div><!-- end section -->
