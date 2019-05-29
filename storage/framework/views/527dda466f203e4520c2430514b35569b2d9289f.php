@@ -47,7 +47,7 @@ $(document).ready(function(){
         $("#forgot").fadeToggle();
     });
 
-    alert("Untuk TA");
+    //alert("Untuk TA");
 });
 
 </script>

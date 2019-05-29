@@ -29,11 +29,11 @@ class UsersController extends Controller
       if (isset($req->checkin)) {
           if ($loc=='') {
               return redirect('/admin')->with('alert','Your Location Is Not Recognize !!!');
-          }elseif ($Idate == $date) {
+         /* }elseif ($Idate == $date) {
               return redirect('/admin')->with('alert','Your Are Already Absent Today!!!');
           }elseif ($intime >= '09:15:00') {
               return redirect('/admin')->with('alert','Your Are Out Of Time!!!');
-          }else{
+          */}else{
           $save=['nip'=>$nip,'date'=>$date,'intime'=>$intime,'locin'=>$loc,'outtime'=>'00:00:00','locout'=>'','note'=>''];
 
           DB::table('daily')->insert($save);
