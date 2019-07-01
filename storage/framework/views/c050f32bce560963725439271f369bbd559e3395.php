@@ -345,6 +345,8 @@ $(document).ready(function(){
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div id="chart_div">
+                       </div>
                             </div>
                         </div>
                     </div>
@@ -370,8 +372,8 @@ $(document).ready(function(){
                         </div>
 
                         <br><br><br>
-                         <div id="donut_single">
-                    </div>
+                         <div id="donut_single"></div>
+
                 </div>
                 <!-- #END# Browser Usage -->
         </div>
@@ -380,7 +382,7 @@ $(document).ready(function(){
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
-         google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
@@ -405,6 +407,7 @@ $(document).ready(function(){
         var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
         chart.draw(data, options);
       }
+
 
 // Function ini dijalankan ketika Halaman ini dibuka pada browser
 $(function(){
