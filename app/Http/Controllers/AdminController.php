@@ -79,14 +79,24 @@ class AdminController extends Controller
 
           if ($hakakses=='admin' OR $hakakses=='super user') {
               $jmltable=$table->count();
-              $table=$table->orderBy('intime', 'ASC')->get();
               $jmlAtable=$Atable->count();
-              $Atable=$Atable->orderBy('intime', 'ASC')->get();
+
+              if ($nip=='A124') {
+                  $table=$table->where('users.kd','S001')->orderBy('intime', 'ASC')->get();
+                  $Atable=$Atable->where('users.kd','S001')->orderBy('intime', 'ASC')->get();
+              }elseif ($nip=='A137') {
+                $table=$table->where('users.kd','T001')->orderBy('intime', 'ASC')->get();
+                $Atable=$Atable->where('users.kd','T001')->orderBy('intime', 'ASC')->get();
+              }else{
+                $table=$table->orderBy('intime', 'ASC')->get();
+                $Atable=$Atable->orderBy('intime', 'ASC')->get();
+              }
+
 
               return view("admin.homeA",[
                   'table'=>$table,
                   'jmltable'=>$jmltable,
-        'Atable'=>$Atable,
+                  'Atable'=>$Atable,
                   'status'=>$status,
                   'jmlAtable'=>$jmlAtable,
                   'hakakses'=>$hakakses,
@@ -156,10 +166,17 @@ class AdminController extends Controller
           $T1130=record::RecordDaily($date1,$date2)->where('jabatan.jabatan','Technical')->whereBetween('intime',['11:00:00','11:30:00'])->count();
           $T12=record::RecordDaily($date1,$date2)->where('jabatan.jabatan','Technical')->whereBetween('intime',['11:30:00','12:00:00'])->count();
 
-
           if ($hakakses=='admin' OR $hakakses=='super user') {
-                               $tbl=$isitbl->count();
-                  $isitbl=$isitbl->orderBY('daily.date','DESC')->orderBY('daily.intime','ASC')->get();
+                  if ($nip=='A124') {
+                    $tbl=$isitbl->where('users.kd','S001')->count();
+                    $isitbl=$isitbl->where('users.kd','S001')->orderBY('daily.date','DESC')->orderBY('daily.intime','ASC')->get();
+                  }elseif ($nip=='A137') {
+                    $tbl=$isitbl->where('users.kd','T001')->count();
+                    $isitbl=$isitbl->where('users.kd','T001')->orderBY('daily.date','DESC')->orderBY('daily.intime','ASC')->get();
+                  }else{
+                    $tbl=$isitbl->count();
+                    $isitbl=$isitbl->orderBY('daily.date','DESC')->orderBY('daily.intime','ASC')->get();
+                  }
 
                   return view('admin.recordpresence',[
                       'date1'=>$date1,
@@ -211,7 +228,7 @@ class AdminController extends Controller
                       'T1030'=>$T1030,
                       'T11'=>$T11,
                       'T1130'=>$T1130,
-                  'T12'=>$T12]);
+                      'T12'=>$T12]);
               }else{
                 return redirect("/recordK");
               }

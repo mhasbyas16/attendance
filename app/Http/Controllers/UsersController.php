@@ -263,8 +263,16 @@ class UsersController extends Controller
 
 
       if ($hakakses=='admin' OR $hakakses=='super user') {
+            if ($nip=='A124') {
+              $tbl=$isitbl->where('users.kd','S001')->count();
+              $isitbl=$isitbl->where('users.kd','S001')->orderBy('daily.date','desc')->get();
+            }elseif ($nip=='A137') {
+              $tbl=$isitbl->where('users.kd','T001')->count();
+              $isitbl=$isitbl->where('users.kd','T001')->orderBy('daily.date','desc')->get();
+            }else{
               $tbl=$isitbl->count();
               $isitbl=$isitbl->orderBy('daily.date','desc')->get();
+            }
           }else{
                $tbl=$isitbl->where('users.nip',$nip)->count();
               $isitbl=$isitbl->where('users.nip',$nip)->orderBy('daily.date','desc')->get();

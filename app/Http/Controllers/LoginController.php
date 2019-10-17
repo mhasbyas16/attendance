@@ -62,13 +62,19 @@ class LoginController extends Controller
           $technical=($jmlT/$jmlusers)*100;
 
           if ($hakakses=='admin' OR $hakakses=='super user') {
+            if ($nip='A124') {
+              $table=record::Daily()->where('users.kd','S001')->count();
+              $Atable=record::Activity()->where('users.kd','S001')->count();
+            }elseif ($nip='A137') {
+              $table=record::Daily()->where('users.kd','T001')->count();
+              $Atable=record::Activity()->where('users.kd','T001')->count();
+            }else{
               $table=record::Daily()->count();
               $Atable=record::Activity()->count();
+            }
           }else{
-
               $table=record::Daily()->where('daily.nip',$nip)->count();
               $Atable=record::Activity()->where('activity.nip',$nip)->count();
-
           }
 
           $qD=DB::table('daily')->where('nip',$nip)->orderBy('id','desc')->limit('1');
@@ -79,8 +85,10 @@ class LoginController extends Controller
           //validasi daily
           if ($qD->count()==0 OR $maxD->outtime !="00:00:00") {
               $tmbl = '';
+              $maxDC= $qD->count();
           }elseif($maxD->outtime =="00:00:00"){
               $tmbl = 'disabled';
+              $maxDC='';
           }
           //validasi activity
           if ($qA->count()==0 OR $maxA->outtime !="00:00:00") {
@@ -110,8 +118,8 @@ class LoginController extends Controller
                   'table'=>$table,
                   'Atable'=>$Atable,
                   'jmlusers'=>$jmlusers,
-                  'maxD'=>$maxD]);
-
+                  'maxD'=>$maxD,
+                  'maxDC'=>$maxDC]);
       }
   }
 

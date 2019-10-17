@@ -57,7 +57,6 @@
                     <td>{{$table -> outtime}}</td>
                     <td><a href="https://www.google.co.id/maps/place/{{$table -> locout}}">{{$table -> locout}}</a></td>
                 </tr>
-
             <?php $no++?>
             @endforeach
             </tbody>
@@ -110,7 +109,7 @@
 									<td>{{$Atable->nama}}</td>
 									<td>{{$Atable->jabatan}}</td>
 									<td>{{$Atable->subject}}</td>
-                                    <td>{{$Atable->customer}}</td>
+                  <td>{{$Atable->customer}}</td>
 									<td>{{$Atable->intime}}</td>
 									<td><a href="https://www.google.co.id/maps/place/{{$Atable->locin}}"> {{$Atable->locin}}</a></td>
 									<td>{{$Atable->outtime}}</td>

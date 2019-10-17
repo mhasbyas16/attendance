@@ -191,7 +191,7 @@ $(document).ready(function(){
                         <div class="row text-center">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <b><h3>Your Location</h3>
-                                    <input type="text" name="Idate" value="{{$maxD->date}}"  hidden>
+                                    <input type="text" name="Idate" value="@if($maxDC==0) @else{{$maxD->date}}@endif"  hidden>
                                     <textarea style="border: none;" class="text-center" id="tampilkan" name="loc" readonly></textarea></b><br>
                                 <input type="submit" class="btn btn-success" name="checkin" value="Check In" {{$tmbl}}></input>&nbsp;<input type="submit" class="btn btn-danger" name="checkout" value="Check Out"></input>
                             </div>
@@ -321,7 +321,7 @@ $(document).ready(function(){
                                         <tr>
                                             <td>2</td>
                                             <td>Sales and Marketing</td>
-                                            <td>Yerry Tualena</td>
+                                            <td>Nurcholis Hifna</td>
                                             <td colspan="2">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$sales}}%"></div>
